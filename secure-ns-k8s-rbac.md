@@ -1,6 +1,6 @@
 ## Secure namespaces in Kubernetes cluster using RBAC
 
-![k8s-security](images/secure-ns-k8s-rbac.png)
+![k8s-security](images/secure-ns-k8s-rbac/1.png)
 
 In this tutorial, I will show how to secure **'system‘** namespaces in EKS cluster by user access.
 
@@ -194,7 +194,7 @@ helm install secure-system-ns ./secure-system-ns
 
 * To map ‘view-user1’ to view group, I am using builtin ‘view’ group.
 
-** Let’s edit aws-auth config-map: **
+**Let’s edit aws-auth config-map:**
 
 ```bash
 kubectl edit cm aws-auth -n kube-system
@@ -219,4 +219,4 @@ mapRoles: |
 Of course you need to replace ‘userarn’ with real one, which you can find in AWS console -> IAM -> users.
 
 
-** Configuration is applied now and everything must work! **
+**Configuration is applied now and everything must work!**
