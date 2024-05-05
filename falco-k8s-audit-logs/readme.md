@@ -1,4 +1,4 @@
-# How to instal falco ?
+# How to instal falco
 
 ## Add falcosecurity repo
 helm repo add falcosecurity https://falcosecurity.github.io/charts
