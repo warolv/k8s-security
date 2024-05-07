@@ -2,6 +2,8 @@
 
 ![k8s-security](images/secure-ns-k8s-rbac/1.png)
 
+[This tutorial on my blog](https://igorzhivilo.com/2024/01/14/secure-namespaces-k8s-rbac/)
+
 In this tutorial, I will show how to secure **'system‘** namespaces in EKS cluster by user access.
 
 List of **namespaces** with **limited** access:
@@ -220,3 +222,9 @@ Of course you need to replace ‘userarn’ with real one, which you can find in
 
 
 **Configuration is applied now and everything must work!**
+
+Thank you for reading, I hope you enjoyed it, see you in the next post.
+
+Please subscribe to my [YT channel](https://www.youtube.com/@igorzhivilo) and [twitter](https://twitter.com/warolv), to be notified when the next tutorial is published.
+
+You can find it also in my [blog](https://igorzhivilo.com/2024/01/14/secure-namespaces-k8s-rbac/)
