@@ -2,6 +2,8 @@
 
 ![k8s-security](images/falco-k8s-audit-logs/0.png)
 
+[This tutorial on my blog](https://igorzhivilo.com/2024/05/06/falco-eks-audit-logs/)
+
 In this tutorial, I will show how to:
 
 * Install Falco to your EKS cluster using helm chart
