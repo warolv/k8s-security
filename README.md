@@ -19,3 +19,11 @@ In this tutorial, I will show how to:
 * Enable EKS audit logs for your cluster
 * Detect security events based on EKS audit logs activity.
 * Overview of most useful rules for my opinion
+
+### 3. [Threat detection with Falco on EKS and using kernel module driver](falco-syscalls.md)
+
+![k8s-security](images/falco-syscalls/0.png)
+
+In previous tutorial I used **Falco** plugin for **K8s Audit Logs**
+
+And for this tutorial I will use **driver** called **Kernel Module**, in order to monitor system events from the kernel and trying to detect malicious behaviors on Linux systems.

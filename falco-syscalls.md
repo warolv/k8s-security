@@ -264,3 +264,5 @@ Thank you for reading, I hope you enjoyed it, see you in the next post.
 The code of helm chart created you can find in my [repo](https://github.com/warolv/k8s-security)
 
 Please subscribe to my [YT channel](https://www.youtube.com/@igorzhivilo) and [twitter](https://twitter.com/warolv), to be notified when the next tutorial is published.
+
+You can find it also in my [blog](https://igorzhivilo.com/2024/05/12/falco-syscalls/)
