@@ -161,7 +161,7 @@ falco:
 podPriorityClassName: "system-cluster-critical"
 ```
 
-![]({{site.baseurl}}/images/k8s-security/falco/syscalls/1.png)
+![]({{site.baseurl}}/images/falco-syscalls/1.png)
 
 > Pod Priority and Preemption
 https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/
@@ -179,7 +179,7 @@ helm install falco falcosecurity/falco --namespace falco \
 --create-namespace -f values.yaml
 ```
 
-![]({{site.baseurl}}/images/k8s-security/falco/syscalls/2.png)
+![]({{site.baseurl}}/images/falco-syscalls/2.png)
 
 DaemonSet deployed succefully to all(11) worker nodes in my case.
 
@@ -254,7 +254,7 @@ Let's test 'Terminal shell in container' rule for example, for this you need to 
 kubectl exec -it any-pod -- /bin/sh
 ```
 
-![]({{site.baseurl}}/images/k8s-security/falco/syscalls/3.png)
+![]({{site.baseurl}}/images/falco-syscalls/3.png)
 
 You will see notifications coming to a Slack channel you defined with a webhook ID (with a slight difference).
 
