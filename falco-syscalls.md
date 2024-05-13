@@ -12,29 +12,28 @@ In previous tutorial I used **Falco** plugin for **K8s Audit Logs**
 
 And for this tutorial I will use **driver** called **Kernel Module**, in order to monitor system events from the kernel and trying to detect malicious behaviors on Linux systems.
 
-It's important for me to say that I am focused on being practical as much as possible, like in other tutorials. Theory you can find plenty of on falco.org or with Google's help.
+> It's important for me to say that I am focused on being practical as much as possible, like in other tutorials. Theory you can find plenty of on falco.org or with Google's help.
 
 
 ### Falco plugins
 
 > "Plugins are used to extend Falco to support new data sources. The current plugin framework supports plugins with the following capabilities:
 
-Plugin capabilities are composable, we can have a single plugin with both capabilities. Or on the other hand, we can load two different plugins each with its capability, one plugin as a source of events and another as an extractor. A good example of this is the Kubernetes Audit Events and the Falcosecurity Json plugins. By deploying them both we have support for the K8s Audit Logs in Falco
+> Plugin capabilities are composable, we can have a single plugin with both capabilities. Or on the other hand, we can load two different plugins each with its capability, one plugin as a source of events and another as an extractor. A good example of this is the Kubernetes Audit Events and the Falcosecurity Json plugins. By deploying them both we have support for the K8s Audit Logs in Falco
 
-Note that the driver is not required when using plugins."
+> Note that the driver is not required when using plugins."
 
 ### Falco drivers
-> "Falco needs a driver to analyze the system workload and pass security events to userspace. The supported drivers are:
+> "Falco needs a driver to analyze the system workload and pass security events to userspace. The supported drivers   
+  are:
 
-* Kernel module
+> * Kernel module
+  * eBPF probe
+  * Modern eBPF probe
 
-* eBPF probe
+> The driver should be installed on the node where Falco is running. The kernel module (default option) and the eBPF probe are installed on the node through an init container (i.e. falco-driver-loader) that tries download a prebuilt driver or build it on-the-fly as a fallback. The Modern eBPF probe doesn't require an init container because it is shipped directly into the Falco binary. However, the Modern eBPF probe requires recent BPF features."
 
-* Modern eBPF probe
-
-The driver should be installed on the node where Falco is running. The kernel module (default option) and the eBPF probe are installed on the node through an init container (i.e. falco-driver-loader) that tries download a prebuilt driver or build it on-the-fly as a fallback. The Modern eBPF probe doesn't require an init container because it is shipped directly into the Falco binary. However, the Modern eBPF probe requires recent BPF features."
-
-When using the drivers, Falco is deployed as a DaemonSet. By using a DaemonSet, Kubernetes ensures that a Falco instance will be running on each of our nodes even when we add new nodes to our cluster. So, it is the perfect match when we need to monitor all the nodes in our cluster.
+> When using the drivers, Falco is deployed as a DaemonSet. By using a DaemonSet, Kubernetes ensures that a Falco instance will be running on each of our nodes even when we add new nodes to our cluster. So, it is the perfect match when we need to monitor all the nodes in our cluster.
 
 ### Prerequisites
 
@@ -158,9 +157,9 @@ falco:
 
 * The DaemonSet wasn't fully deployed: a couple of pods were in a pending state and not running. This problem occurred for 5% of the pods. The reason for that was the full capacity of the nodes; the Kubernetes scheduler wasn't able to deploy Falco pods to those nodes due to insufficient 'CPU / memory' resources. To solve this problem, I used Pod Priority Class to give higher priority to those pods. Here's an example of how to use it with values.yaml:
 
-{% highlight yaml %}
+```yaml
 podPriorityClassName: "system-cluster-critical"
-{% endhighlight %}
+```
 
 ![]({{site.baseurl}}/images/k8s-security/falco/syscalls/1.png)
 
@@ -253,9 +252,9 @@ You can read it also in my previous [post]({{site.baseurl}}/2024/05/06/falco-eks
 
 Let's test 'Terminal shell in container' rule for example, for this you need to exec into any pod in your cluster:
 
-{% highlight bash %}
+```bash
 kubectl exec -it any-pod -- /bin/sh
-{% endhighlight %}
+```
 
 ![]({{site.baseurl}}/images/k8s-security/falco/syscalls/3.png)
 
