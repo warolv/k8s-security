@@ -18,22 +18,22 @@ And for this tutorial I will use **driver** called **Kernel Module**, in order t
 ### Falco plugins
 
 > "Plugins are used to extend Falco to support new data sources. The current plugin framework supports plugins with the following capabilities:
-
+> 
 > Plugin capabilities are composable, we can have a single plugin with both capabilities. Or on the other hand, we can load two different plugins each with its capability, one plugin as a source of events and another as an extractor. A good example of this is the Kubernetes Audit Events and the Falcosecurity Json plugins. By deploying them both we have support for the K8s Audit Logs in Falco
-
+> 
 > Note that the driver is not required when using plugins."
 
 ### Falco drivers
 > "Falco needs a driver to analyze the system workload and pass security events to userspace. The supported drivers   
   are:
-
+>
 > * Kernel module
-  * eBPF probe
-  * Modern eBPF probe
-
+> * eBPF probe
+> * Modern eBPF probe
+>
 > The driver should be installed on the node where Falco is running. The kernel module (default option) and the eBPF probe are installed on the node through an init container (i.e. falco-driver-loader) that tries download a prebuilt driver or build it on-the-fly as a fallback. The Modern eBPF probe doesn't require an init container because it is shipped directly into the Falco binary. However, the Modern eBPF probe requires recent BPF features."
 
-> When using the drivers, Falco is deployed as a DaemonSet. By using a DaemonSet, Kubernetes ensures that a Falco instance will be running on each of our nodes even when we add new nodes to our cluster. So, it is the perfect match when we need to monitor all the nodes in our cluster.
+> When using the drivers, Falco is deployed as a DaemonSet. By using a DaemonSet, Kubernetes ensures that a Falco   instance will be running on each of our nodes even when we add new nodes to our cluster. So, it is the perfect match when we need to monitor all the nodes in our cluster.
 
 ### Prerequisites
 
@@ -163,10 +163,8 @@ podPriorityClassName: "system-cluster-critical"
 
 ![]({{site.baseurl}}/images/k8s-security/falco/syscalls/1.png)
 
-```html
 > Pod Priority and Preemption
 https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/
-```
 
 
 ### Installation of Falco helm chart
